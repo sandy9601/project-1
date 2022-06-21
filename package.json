@@ -18,19 +18,9 @@
   },
   "homepage": "https://github.com/sandy9601/project-1#readme",
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
+    "mongoose": "^6.4.0",
+    "nodemon": "^2.0.16",
     "body-parser": "^1.20.0",
     "express": "^4.18.1"
   }
-=======
-    "express": "^4.18.1"
-  },
-  "devDependencies": {}
->>>>>>> 804bd9b916432303b6e916d6878a600171eee37d
-=======
-    "body-parser": "^1.20.0",
-    "express": "^4.18.1"
-  }
->>>>>>> 5548253bf91df406916f03db4c198ef200840b3b
 }
