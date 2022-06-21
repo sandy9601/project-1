@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/sandy9601/project-1#readme",
   "dependencies": {
-    "express": "^4.18.1"
-  },
-  "devDependencies": {}
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0",
+    "nodemon": "^2.0.16"
+  }
 }
