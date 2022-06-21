@@ -1,0 +1,24 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "description": "radon-project-1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandy9601/project-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandy9601/project-1/issues"
+  },
+  "homepage": "https://github.com/sandy9601/project-1#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {}
+}
