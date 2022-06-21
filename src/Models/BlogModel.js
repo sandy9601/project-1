@@ -45,5 +45,3 @@ const BlogsSchema = new mongoose.Schema(
     {timetamps:true}   
 );
 module.exports=mongoose.model("blog",BlogsSchema)
-
-
