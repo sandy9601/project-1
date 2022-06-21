@@ -5,7 +5,7 @@ const BlogModel=require("../Models/BlogModel")
 const CreateBlog=async function(req,res){
     try{
     const data=req.body
-    data =req.body
+   
     if(!data){
         return res.status(400).send({status:true,msg:"body couldnot be empty"})
     }
