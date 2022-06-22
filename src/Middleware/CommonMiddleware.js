@@ -2,6 +2,10 @@ const AuthorModel = require("../Models/AuthorModel")
 
 const mid1 = async function (req, res, next) {
     try {
+        let data=req.body
+        if(Oject.keys(data).lenght===0){
+            return res.status(404).send({ status: false, msg: "body couldnot be empty" })
+        }
         let author_id = req.body.author_id
         let author = await AuthorModel.findById(author_id)
         if (!author) {
