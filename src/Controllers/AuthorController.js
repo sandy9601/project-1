@@ -2,8 +2,9 @@ const AuthorModel = require("../Models/AuthorModel")
 
 const CreateAuthor=async function(req,res){
     try{
-    data =req.body
-    if(!data){
+    let data =req.body
+
+    if(Object.keys(data).length===0){
        return res.status(400).send({status:true,msg:"body couldnot be empty"})
     }
     if(!data.firstName){
@@ -12,6 +13,8 @@ const CreateAuthor=async function(req,res){
     if(!data.LastName){
         return res.status(400).send({status:false,nsg: "Last name should be present"})
     }
+
+
 
     if(!data.title){
         return res.status(400).send({status:false,nsg: "title should be present"})
@@ -22,6 +25,9 @@ const CreateAuthor=async function(req,res){
     let emailvalidation= regex.test(testmails)
     if(!emailvalidation){
         return res.status(400).send({status:false,msg: "enter a valid email id"})
+    }
+    if(!data.password){
+        return res.status(400).send({status:false,nsg: "password required"})
     }
 
     const Enum = ["Mr", "Mrs", "Miss"]
@@ -36,5 +42,4 @@ if(!enums){
 catch(err){
      res.status(500).send({status:false,error:err.message})
 }}
-
 module.exports.CreateAuthor=CreateAuthor
