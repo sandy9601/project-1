@@ -30,7 +30,7 @@ catch(err){
 const getBlog=async function(req,res){
     try{
        let query=req.query
-        const getBlog=await BlogModel.find(query)
+        const getBlog=await BlogModel.find({$and:[{isDeleted:false,isPublished:true}, query]})
         if(getBlog.length===0){
             return res.status(404).send({status:false,msg:"No User Found"})
         }
@@ -48,8 +48,8 @@ const UpdateBlog=async function(req,res){
     let data=req.body
     let tags=data.tags
     let subcategory=data.subcategory
-    let author_id=req.params.BlogsId
-    const UpdateBlog=await BlogModel.findOneAndUpdate({_id:author_id},{$set:{isPublished:true,publishedAt:Date.now(),body:data.body,tittle:data.tittle},$push:{tags,subcategory}},{new:true})
+    let BlogId=req.params.BlogsId
+    const UpdateBlog=await BlogModel.findOneAndUpdate({_id:BlogId},{$set:{isPublished:true,publishedAt:Date.now(),body:data.body,tittle:data.tittle},$push:{tags,subcategory}},{new:true})
     res.send({msg:true,data:UpdateBlog})
 }
 catch(err){
@@ -63,7 +63,7 @@ catch(err){
 const DeletedBlog=async function(req,res){
     try{
     let BlogsId=req.params.BlogsId
-    console.log(BlogsId)
+
     const DeletedBlog=await BlogModel.findOneAndUpdate({_id:BlogsId,isDeleted:false},{$set:{isDeleted:true,deleteAt:Date.now()}})
     return res.status(200).send()
 }
@@ -77,7 +77,8 @@ catch(err){
 
 const DeletedQuery=async function(req,res){
     try{
-  console.log(query)
+
+  let query=req.query
     if(Object.keys(query).length===0){
         return res.status(400).send({status:false,msg:"query params couldnot be empty"})
     }

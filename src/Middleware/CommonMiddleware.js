@@ -3,6 +3,7 @@ const AuthorModel=require("../Models/AuthorModel")
 // req body validation
 const mid1=async function(req,res,next){
     try{
+        let data =req.body
 let author_id=data.author_id
 let author=await AuthorModel.findById(author_id)
 if(!author){
