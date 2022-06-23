@@ -108,7 +108,3 @@ module.exports.UpdateBlog=UpdateBlog
 module.exports.DeletedBlog=DeletedBlog
 
 module.exports.DeletedQuery=DeletedQuery
-
-
-
-

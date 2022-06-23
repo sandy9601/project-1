@@ -5,6 +5,8 @@ const BlogController=require("../Controllers/BlogsController")
 const CommonMiddleware=require("../Middleware/CommonMiddleware")
 const isdeleted=require("../Middleware/isdeleted")
 const BlogIdValidation=require("../Middleware/BlogIdValidation")
+const UserController=require("../Controllers/UserController")
+
 
 
 
@@ -19,6 +21,8 @@ router.put("/UpdateBlog/:BlogsId",isdeleted.mid3, BlogIdValidation.BlogIdValidat
 router.delete("/DeletedBlog/:BlogsId", BlogIdValidation.BlogIdValidation,isdeleted.mid2,BlogController.DeletedBlog)
 
 router.delete("/DeletedQuery",BlogController.DeletedQuery)
+router.post("/authorlogin", UserController.authorlogin)
+
 
 
 module.exports=router
