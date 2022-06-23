@@ -22,7 +22,7 @@ POST /blogs
 
 Create a blog document from request body. Get authorId in request body only.
 
-Make sure the authorId is a valid authorId by checking the author exist in the authors collection.
+ authorMake sure the authorId is a validId by checking the author exist in the authors collection.
 
 Return HTTP status 201 on a succesful blog creation. Also return the blog document. The response should be a JSON object like this
 
@@ -113,6 +113,7 @@ Make sure that only the owner of the blogs is able to edit or delete the blog.
 In case of unauthorized access return an appropirate error message.
 
 Testing (Self-evaluation During Development)
+
 To test these apis create a new collection in Postman named Project 1 Blogging
 Each api should have a new request in this collection
 Each request in the collection should be rightly named. Eg Create author, Create blog, Get blogs etc
