@@ -31,6 +31,7 @@ const getBlog=async function(req,res){
     try{
        let query=req.query
         const getBlog=await BlogModel.find(query)
+      
         if(getBlog.length===0){
             return res.status(404).send({status:false,msg:"No User Found"})
         }
@@ -77,6 +78,7 @@ catch(err){
 
 const DeletedQuery=async function(req,res){
     try{
+      let query=req.query
   console.log(query)
     if(Object.keys(query).length===0){
         return res.status(400).send({status:false,msg:"query params couldnot be empty"})

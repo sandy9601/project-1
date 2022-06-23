@@ -4,7 +4,7 @@ const AuthorModel = require("../Models/AuthorModel")
 //Creating Author Question
 const CreateAuthor=async function(req,res){
     try{
-    let data =req.body
+    let  data =req.body
 
     if(Object.keys(data).length===0){
        return res.status(400).send({status:true,msg:"body couldnot be empty"})

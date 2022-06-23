@@ -33,4 +33,3 @@ let data =req.body
 
 module.exports.mid2=mid2
 module.exports.mid3=mid3
-
