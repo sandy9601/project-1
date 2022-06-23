@@ -12,7 +12,7 @@ const BlogsSchema = new mongoose.Schema(
             require:true
         },
         author_id:{
-            type: Object,
+            type: ObjectId,
             ref: "Author",
             require: true
         },
@@ -44,4 +44,5 @@ const BlogsSchema = new mongoose.Schema(
     },
     {timetamps:true}   
 );
+
 module.exports=mongoose.model("blog",BlogsSchema)
