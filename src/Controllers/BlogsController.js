@@ -48,8 +48,8 @@ const UpdateBlog=async function(req,res){
     let data=req.body
     let tags=data.tags
     let subcategory=data.subcategory
-    let author_id=req.params.BlogsId
-    const UpdateBlog=await BlogModel.findOneAndUpdate({_id:author_id},{$set:{isPublished:true,publishedAt:Date.now(),body:data.body,tittle:data.tittle},$push:{tags,subcategory}},{new:true})
+    let BlogsId=req.params.BlogsId
+    const UpdateBlog=await BlogModel.findOneAndUpdate({_id:BlogsId},{$set:{isPublished:true,publishedAt:Date.now(),body:data.body,tittle:data.tittle},$push:{tags,subcategory}},{new:true})
     res.send({msg:true,data:UpdateBlog})
 }
 catch(err){
@@ -77,11 +77,12 @@ catch(err){
 
 const DeletedQuery=async function(req,res){
     try{
+        const query= req.query
   console.log(query)
     if(Object.keys(query).length===0){
         return res.status(400).send({status:false,msg:"query params couldnot be empty"})
     }
-    const DeletedQuery=await BlogModel.updateMany(query,{$set:{isDeleted:false}}) 
+    const DeletedQuery=await BlogModel.updateMany(query,{$set:{isDeleted:true}}) 
     if(!DeletedQuery){
         return res.status(404).send({status:false,msg:"Blog doesnot exist"})
     }
