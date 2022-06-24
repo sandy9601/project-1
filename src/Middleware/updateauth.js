@@ -10,7 +10,6 @@ const updateauth = async function (req, res,next) {
     if (!token) {
     return res.status(400).send({ status: false, msg: "token must be present" })
   }
-
     let BlogId = req.params.BlogsId
     let author_id = await BlogModel.find({_id:BlogId })
     let auth = author_id[0].author_id.toString()

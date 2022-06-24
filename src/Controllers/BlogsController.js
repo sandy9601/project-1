@@ -12,6 +12,7 @@ const CreateBlog=async function(req,res){
     if(!data.tittle){
        return res.status(400).send({status:false,msg:"title couldnot be empty"})
     }
+    
      if(!data.body){
         return res.status(400).send({status:false ,msg: "body couldnot be empty"})
      }
