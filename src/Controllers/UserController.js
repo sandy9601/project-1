@@ -6,7 +6,7 @@ let authorlogin=async function(req,res){
     let password = req.body.password
     let author = await AuthorModel.findOne({emailId:authoremail,password:password})
     if(!author){
-        return  res.send({
+        return  res.status(400).send({
             status:false,
             msg:"author email and password necessary",
         });}

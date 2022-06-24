@@ -10,7 +10,7 @@ const BlogIdValidation=async function(req,res,next){
         return res.status(400).send({status:false,msg:"Invalid BlogId"})
     }
     let findid=await BlogModel.find({_id:blog_id})
-    console.log(findid)
+   //console.log(findid)
     if(findid.length===0){
         return res.status(404).send({status:false,msg:"Blog not found"})
     }
