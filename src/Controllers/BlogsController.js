@@ -2,7 +2,7 @@ const { json } = require("body-parser")
 const { now } = require("mongoose")
 const AuthorModel = require("../Models/AuthorModel")
 const BlogModel=require("../Models/BlogModel")
-
+const jwt=require("jsonwebtoken")
 
 //Q1 Creating Blog
 
@@ -48,9 +48,10 @@ const UpdateBlog=async function(req,res){
     let data=req.body
     let tags=data.tags
     let subcategory=data.subcategory
+
     let BlogId=req.params.BlogsId
     const UpdateBlog=await BlogModel.findOneAndUpdate({_id:BlogId},{$set:{isPublished:true,publishedAt:Date.now(),body:data.body,tittle:data.tittle},$push:{tags,subcategory}},{new:true})
-    res.send({msg:true,data:UpdateBlog})
+    res.status(200).send({msg:true,data:UpdateBlog})
 }
 catch(err){
     res.status(500).send({status:false,error:err.message})
@@ -78,11 +79,14 @@ catch(err){
 const DeletedQuery=async function(req,res){
     try{
 
-  let query=req.query
+        const query= req.query
     if(Object.keys(query).length===0){
         return res.status(400).send({status:false,msg:"query params couldnot be empty"})
     }
-    const DeletedQuery=await BlogModel.updateMany(query,{$set:{isDeleted:false}}) 
+    let token = req.headers["a-auth-token"];
+    let decodedToken = jwt.verify(token, "Functionup-radon")
+    let authorid=decodedToken.authorid
+    const DeletedQuery=await BlogModel.updateMany({$and:[{author_id:authorid} , query]},{$set:{isDeleted:false}}) 
     if(!DeletedQuery){
         return res.status(404).send({status:false,msg:"Blog doesnot exist"})
     }
