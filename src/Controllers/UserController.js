@@ -8,10 +8,10 @@ let authorlogin=async function(req,res){
     
 if(!authoremail){
     res.status(400).send({status:false,msg:"email must be present"})
-}else{
+}
 if(!password){
     res.status(400).send({status:false,msg:"password must be present"})
-}}
+}
 let author = await AuthorModel.findOne({email:authoremail,password:password})
 
     if(!author){
@@ -26,6 +26,7 @@ let author = await AuthorModel.findOne({email:authoremail,password:password})
 catch(err){
     return res.status(500).send({status:false,error:err.message})
 }    }
+
 
 
 module.exports.authorlogin=authorlogin
