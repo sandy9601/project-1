@@ -3,7 +3,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 const BlogsSchema = new mongoose.Schema(
     {
-        tittle: {
+        title: {
             type: String,
             require: true
         },
@@ -11,10 +11,9 @@ const BlogsSchema = new mongoose.Schema(
             type: String,
             require: true
         },
-        author_id:{
+        authorId:{
             type: ObjectId,
-
-            ref: "Author",
+            ref: "AuthorModel",
             require: true
         },
         tags: {
@@ -36,7 +35,6 @@ const BlogsSchema = new mongoose.Schema(
         },
         publishedAt: {
             type: Date
-
         },
         isPublished: {
             type: Boolean,
@@ -47,6 +45,6 @@ const BlogsSchema = new mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("blog", BlogsSchema)
+module.exports = mongoose.model("BlogsModel", BlogsSchema)
 
 
