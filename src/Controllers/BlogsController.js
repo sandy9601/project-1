@@ -31,6 +31,7 @@ const getBlog=async function(req,res){
     try{
        let query=req.query
         const getBlog=await BlogModel.find({$and:[{isDeleted:false,isPublished:true}, query]})
+        
         if(getBlog.length===0){
             return res.status(404).send({status:false,msg:"No User Found"})
         }

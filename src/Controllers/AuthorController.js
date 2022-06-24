@@ -44,7 +44,8 @@ if(!data.email){
     }
 
     let email=await AuthorModel.find({email:data.email})
-    if(data.email===email[0].email){
+    console.log(email)
+    if(email.length>0&&data.email===email[0].email){
         return res.status(400).send({status:false,msg: "email already resgistered"})
     }
 

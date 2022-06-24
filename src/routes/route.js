@@ -17,7 +17,7 @@ router.post("/CreateBlog",mid.middleAuth,isdeleted.mid3,CommonMiddleware.mid1, B
 
 router.get("/getBlog", BlogController.getBlog)
 
-router.put("/UpdateBlog/:BlogsId",isdeleted.mid3, BlogIdValidation.BlogIdValidation, updatemid.updateauth, isdeleted.mid2,BlogController.UpdateBlog)
+router.put("/UpdateBlog/:BlogsId",isdeleted.mid3,isdeleted.mid2, BlogIdValidation.BlogIdValidation, updatemid.updateauth,BlogController.UpdateBlog)
 
 router.delete("/DeletedBlog/:BlogsId", BlogIdValidation.BlogIdValidation, updatemid.updateauth,isdeleted.mid2,BlogController.DeletedBlog)
 
