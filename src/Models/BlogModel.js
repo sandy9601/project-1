@@ -11,9 +11,6 @@ const BlogsSchema = new mongoose.Schema(
             type: String,
             require: true
         },
-
-       
-
         author_id:{
             type: ObjectId,
 
@@ -48,6 +45,7 @@ const BlogsSchema = new mongoose.Schema(
     },
     { timetamps: true }
 );
+
 
 module.exports = mongoose.model("blog", BlogsSchema)
 

@@ -9,12 +9,24 @@ const CreateAuthor=async function(req,res){
     if(Object.keys(data).length===0){
        return res.status(400).send({status:true,msg:"body couldnot be empty"})
     }
+    
     if(!data.firstName){
         return res.status(400).send({status:false,msg: "first name should be present"})
     }
-    if(!data.LastName){
-        return res.status(400).send({status:false,msg: "Last name should be present"})
-    }
+    
+    // console.log(data.firstName.length)
+    // console.log(typeof(data.LastName))
+    // let string=String
+    // console.log(typeof(data.firstName)!=string)
+    // if(typeof(data.firstName)!=String){
+    //     return res.status(400).send({status:false,msg:"firstName must be String"})
+    // }
+    // if(!data.LastName){
+    //     return res.status(400).send({status:false,msg: "Last name should be present"})
+    // }
+    // if(typeof(data.LastName)!==String){
+    //     return res.status(400).send({status:false,msg:"LastName must be String"})
+    // }
 
     if(!data.title){
         return res.status(400).send({status:false,msg: "title should be present"})
@@ -30,10 +42,16 @@ if(!data.email){
     if(!emailvalidation){
         return res.status(400).send({status:false,msg: "enter a valid email id"})
     }
+
+    let email=await AuthorModel.find({email:data.email})
+    if(data.email===email[0].email){
+        return res.status(400).send({status:false,msg: "email already resgistered"})
+    }
+
     if(!data.password){
         return res.status(400).send({status:false,nsg: "password required"})
     }
-    
+
 //Enum Validation
 
     const Enum = ["Mr", "Mrs", "Miss"]
@@ -48,4 +66,7 @@ if(!enums){
 catch(err){
      res.status(500).send({status:false,error:err.message})
 }}
+
 module.exports.CreateAuthor=CreateAuthor
+
+

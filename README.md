@@ -52,7 +52,13 @@ List of blogs that have a specific subcategory example of a query url: blogs?fil
 
 PUT /blogs/:blogId
 
-Updates a blog by changing the its title, body, adding tags, adding a subcategory. (Assuming tag and subcategory received in body is need to be added)
+Updates a blog by changing the its 
+title,
+body,
+adding tags,
+   adding a subcategory.
+    (Assuming tag and subcategory received in body is need to be added)
+
 
 Updates a blog by changing its publish status i.e. adds publishedAt date and set published to true
 
@@ -64,12 +70,24 @@ Also make sure in the response you return the updated blog document.
 
 DELETE /blogs/:blogId
 
-Check if the blogId exists( and is not deleted). If it does, mark it deleted and return an HTTP status 200 without any response body.
+Check if the blogId exists( and is not deleted). If it does, mark it deleted 
+
+and return an HTTP status 200 without any response body.
+
 If the blog document doesn't exist then return an HTTP status of 404 with a body like this
 
 
 DELETE /blogs?queryParams
-Delete blog documents by category, authorid, tag name, subcategory name, unpublished
+Delete blog documents 
+
+by
+
+ category,
+ authorid,
+  tag name,
+   subcategory name,
+    unpublished
+
 If the blog document doesn't exist then return an HTTP status of 404 with a body like this
 
 
@@ -97,6 +115,7 @@ Make sure that only the owner of the blogs is able to edit or delete the blog.
 In case of unauthorized access return an appropirate error message.
 
 Testing (Self-evaluation During Development)
+
 To test these apis create a new collection in Postman named Project 1 Blogging
 Each api should have a new request in this collection
 Each request in the collection should be rightly named. Eg Create author, Create blog, Get blogs etc

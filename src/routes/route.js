@@ -11,7 +11,6 @@ const updatemid = require("../Middleware/updateauth")
 
 
 
-
 router.post("/CreateAuthor",isdeleted.mid3,AuhtorController.CreateAuthor)
 
 router.post("/CreateBlog",mid.middleAuth,isdeleted.mid3,CommonMiddleware.mid1, BlogController.CreateBlog)
@@ -21,8 +20,9 @@ router.get("/getBlog", BlogController.getBlog)
 router.put("/UpdateBlog/:BlogsId",isdeleted.mid3, BlogIdValidation.BlogIdValidation, updatemid.updateauth, isdeleted.mid2,BlogController.UpdateBlog)
 
 router.delete("/DeletedBlog/:BlogsId", BlogIdValidation.BlogIdValidation, updatemid.updateauth,isdeleted.mid2,BlogController.DeletedBlog)
-router.delete("/DeletedQuery",BlogController.DeletedQuery)
-router.post("/authorlogin", UserController.authorlogin)
 
+router.delete("/DeletedQuery",BlogController.DeletedQuery)
+
+router.post("/authorlogin",isdeleted.mid3, UserController.authorlogin)
 
 module.exports=router
