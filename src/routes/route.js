@@ -23,7 +23,7 @@ router.delete("/DeletedBlog/:BlogsId", BlogIdValidation.BlogIdValidation, update
 
 router.delete("/DeletedQuery",BlogController.DeletedQuery)
 
-router.post("/authorlogin", UserController.authorlogin)
+router.post("/authorlogin", isdeleted.mid3, UserController.authorlogin)
 
 
 module.exports=router

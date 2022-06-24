@@ -9,12 +9,9 @@ const CreateAuthor=async function(req,res){
     if(Object.keys(data).length===0){
        return res.status(400).send({status:true,msg:"body couldnot be empty"})
     }
-    
-    console.log("you are here")
     if(!data.firstName){
         return res.status(400).send({status:false,msg: "first name should be present"})
     }
-console.log("hiii")
     if(!data.title){
         return res.status(400).send({status:false,msg: "title should be present"})
     }
@@ -31,10 +28,9 @@ if(!data.email){
     }
 
     let email=await AuthorModel.find({email:data.email})
-    if(data.email===email[0].email){
+    if(email.length>0&&data.email===email[0].email){
         return res.status(400).send({status:false,msg: "email already resgistered"})
     }
-
     if(!data.password){
         return res.status(400).send({status:false,nsg: "password required"})
     }
