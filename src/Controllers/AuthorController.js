@@ -10,6 +10,7 @@ const CreateAuthor=async function(req,res){
        return res.status(400).send({status:true,msg:"body couldnot be empty"})
     }
     
+    console.log("you are here")
     if(!data.firstName){
         return res.status(400).send({status:false,msg: "first name should be present"})
     }
