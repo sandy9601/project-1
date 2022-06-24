@@ -1,10 +1,10 @@
-const BlogModel=require("../Models/BlogModel")
+const BlogsModel=require("../Models/BlogsModel")
 
 //deleted validation
 const mid2=async function(req,res,next){
     try{
-let BlogId=req.params.BlogsId
-const Blog=await BlogModel.find({_id:BlogId})
+let BlogId=req.params.blogsid
+const Blog=await BlogsModel.find({_id:BlogId})
 if(Blog[0].isDeleted===true){
     return res.status(404).send({status:false,msg:"we cannot modify the deleted documents"})
 }

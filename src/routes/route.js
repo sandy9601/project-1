@@ -11,19 +11,19 @@ const updatemid = require("../Middleware/updateauth")
 
 
 
-router.post("/CreateAuthor",isdeleted.mid3,AuhtorController.CreateAuthor)
+router.post("/authors",isdeleted.mid3,AuhtorController.authors)
 
-router.post("/CreateBlog",mid.middleAuth,isdeleted.mid3,CommonMiddleware.mid1, BlogController.CreateBlog)
+router.post("/blogs",CommonMiddleware.mid1,mid.middleAuth,isdeleted.mid3,BlogController.blogs)
 
-router.get("/getBlog", BlogController.getBlog)
+router.get("/blogs", BlogController.getblogs)
 
-router.put("/UpdateBlog/:BlogsId",isdeleted.mid3, BlogIdValidation.BlogIdValidation, updatemid.updateauth, isdeleted.mid2,BlogController.UpdateBlog)
+router.put("/blogs/:blogsid",isdeleted.mid3, BlogIdValidation.BlogIdValidation, updatemid.updateauth, isdeleted.mid2,BlogController.UpdateBlog)
 
-router.delete("/DeletedBlog/:BlogsId", BlogIdValidation.BlogIdValidation, updatemid.updateauth,isdeleted.mid2,BlogController.DeletedBlog)
+router.delete("/blogs/:blogsid", BlogIdValidation.BlogIdValidation, updatemid.updateauth,isdeleted.mid2,BlogController.DeletedBlog)
 
-router.delete("/DeletedQuery",BlogController.DeletedQuery)
+router.delete("/blogs",BlogController.DeletedQuery)
 
-router.post("/authorlogin", isdeleted.mid3, UserController.authorlogin)
+router.post("/login", isdeleted.mid3, UserController.authorlogin)
 
 
 module.exports=router

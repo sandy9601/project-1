@@ -1,16 +1,15 @@
 const mongoose=require("mongoose")
-const BlogModel = require("../Models/BlogModel")
+const BlogsModel = require("../Models/BlogsModel")
 
 
 
 const BlogIdValidation=async function(req,res,next){
     try{
-    let blog_id=req.params.BlogsId
+    let blog_id=req.params.blogsid
     if(!mongoose.isValidObjectId(blog_id)){
         return res.status(400).send({status:false,msg:"Invalid BlogId"})
     }
-    let findid=await BlogModel.find({_id:blog_id})
-    console.log(findid)
+    let findid=await BlogsModel.find({_id:blog_id})
     if(findid.length===0){
         return res.status(404).send({status:false,msg:"Blog not found"})
     }
@@ -21,6 +20,4 @@ const BlogIdValidation=async function(req,res,next){
 catch(err){
     res.status(500).send({status:false,error:err.message})
 }}
-
-
 module.exports.BlogIdValidation=BlogIdValidation
