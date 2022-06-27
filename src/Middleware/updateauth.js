@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken");
 const BlogsModel = require("../Models/BlogsModel");
 
@@ -18,13 +19,14 @@ const updateauth = async function (req, res,next) {
       return res.send({ status: false, msg: "token is invalid" })
     let authorid= decodedToken.authorid
     if(auth != authorid){
-        return res.status(401).send({status: false,msg:"login user differnt from modified user"})
+        return res.status(401).send({status:false,msg:"login user differnt from modified user"})
     }
     next();
   }
   catch(err){
-    res.status(500).send({status: false,error:err.message})
+    res.status(500).send({status:false,error:err.message})
   }
 }
 
   module.exports.updateauth = updateauth
+
