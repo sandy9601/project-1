@@ -14,11 +14,11 @@ const updatemid = require("../Middleware/updateauth")
 
 router.post("/authors",isdeleted.mid3,AuhtorController.authors)
 
-router.post("/blogs",CommonMiddleware.mid1,mid.middleAuth,isdeleted.mid3,BlogController.blogs)
+router.post("/blogs",isdeleted.mid3,CommonMiddleware.mid1,mid.middleAuth,BlogController.blogs)
 
 router.get("/blogs", BlogController.getblogs)
 
-router.put("/blogs/:blogsid",isdeleted.mid3, BlogIdValidation.BlogIdValidation, updatemid.updateauth, isdeleted.mid2,BlogController.UpdateBlog)
+router.put("/blogs/:blogsid", BlogIdValidation.BlogIdValidation,isdeleted.mid2,isdeleted.mid3,  updatemid.updateauth, BlogController.UpdateBlog)
 
 router.delete("/blogs/:blogsid", BlogIdValidation.BlogIdValidation, updatemid.updateauth,isdeleted.mid2,BlogController.DeletedBlog)
 

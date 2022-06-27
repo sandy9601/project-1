@@ -86,7 +86,8 @@ const DeletedQuery=async function(req,res){
     let token = req.headers["x-api-key"];
     let decodedToken = jwt.verify(token, "Functionup-radon")
     let authorid=decodedToken.authorid
-    const DeletedQuery=await BlogsModel.updateMany({$and:[{authorId:authorid} , query]},{$set:{isDeleted:false}}) 
+    console.log(authorid)
+    const DeletedQuery=await BlogsModel.updateMany({$and:[{authorId:authorid} , query]},{$set:{isDeleted:true}}) 
     if(DeletedQuery.matchedCount===0){
         return res.status(404).send({status:false,msg:"Blog doesnot exist"})
     }
