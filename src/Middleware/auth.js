@@ -13,7 +13,7 @@ const middleAuth = async function (req, res,next) {
     let decodedToken = jwt.verify(token, "Functionup-radon");
     let authorid= decodedToken.authorid
     if(author_id != authorid){
-        return res.status(401).send({status:false,msg:"login user is  differnt from modified user"})
+        return res.status(401).send({status: false,msg:"login user is  differnt from modified user"})
     }
     if (!decodedToken)
       return res.status(400).send({ status: false, msg: "token is invalid" })
@@ -21,7 +21,7 @@ const middleAuth = async function (req, res,next) {
     next();
   }
   catch(err){
-    res.status(500).send({status:false,error:err.message})
+    res.status(500).send({status: false,error:err.message})
   }
 }
 
