@@ -21,13 +21,11 @@ let Author=await AuthorModel.find({email:authoremail})
  }
         const token =jwt.sign({authorid :Author[0]._id.toString(),batch: "radon",organisation:"Function Up"},"Functionup-radon")
         res.status(201).setHeader("x-api-key",token)
-        res.status(200).send({status: true,data:token})
+        res.status(200).send({status: true,data:{token: token}})
 
     }
 catch(err){
     return res.status(500).send({status: false,error:err.message})
 }    }
-
-
 
 module.exports.authorlogin=authorlogin
