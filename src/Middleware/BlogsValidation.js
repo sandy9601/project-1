@@ -24,27 +24,44 @@ const BlogsValidation=async function(req,res,next){
         return res.status(400).send({status: false,msg:" please enter Body name"})
     }
     let Tags=data.tags
-    const results = Tags.map(ele => {
-     return ele.trim();
-    })
-    console.log(results)
-    for (let i=0;i<Tags.length;i++){
-    if (Tags[i]!=results[i])
-      return res.status(400).send({status:false,msg:"tags having extra spaces! Provide proper tags"}) // validation if extra spaces around tags is given by frontend.
-   }
-   var regex=  new RegExp(/^[a-zA-Z ]{2,10}$/);   // naming validation according to characters and length by regex
-   if((data.tags && !Tags.match(regex))){
-     return res.status(400).send({status:false, msg: "tags should be in valid format"}) 
-   }
-   if(data.subCategory && !subCategory.match(regex)){
-     return res.status(400).send({status:false, msg: "subCategory should be in valid format"})
-   }
+    console.log(Tags)
+if(!Tags){
+   return res.status(400).send({status: false,msg: "tags must be present"})
+}
+if(typeof Tags!="object"){
+   return res.status(400).send({status: false,msg: "tags must be in array of strings"})
+}
+//    const results = Tags.map(ele => {
+//      return ele.trim();
+//     })
+//    console.log(results[0])
+//    console.log(Tags[0])
+
+
+// for (let i=0;i<Tags.length;i++){
+//     (Tags[i]!=results[i])
+//      return res.status(400).send({status:false,msg:"tags having extra spaces! Provide proper tags"}) // validation if extra spaces around tags is given by frontend.
+//    }
+   let subcategory=data.subcategory
+if(!subcategory){
+   return res.status(400).send({status: false,msg: "subcategory must be present"})
+}
+if(typeof subcategory!="object"){
+   return res.status(400).send({status: false,msg: "subcategory must be in array of strings"})
+}
+//    const result = subcategory.map(ele => {
+//      return ele.trim();
+//     })
+// for (let i=0;i<subcategory.length;i++){
+//     (subcategory[i]!=result[i])
+//      return res.status(400).send({status:false,msg:"subcategory having extra spaces! Provide proper tags"}) // validation if extra spaces around tags is given by frontend.
+//    }
+
    next()
 }
 catch(err){
    res.status(500).send({status: false,error:err.message})
 }}
 
-
-
 module.exports.BlogsValidation=BlogsValidation
+
