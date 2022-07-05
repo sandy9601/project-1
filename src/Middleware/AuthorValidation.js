@@ -1,5 +1,5 @@
 const AuthorModel = require("../Models/AuthorModel")
-const validator=require("email-validator")
+
 
 //Creating Author Question
 const AuthorValidation =async function(req,res,next){
@@ -53,13 +53,10 @@ if(!enums){
 if(!data.email){
     return res.status(400).send({status: false,msg:"email should be present"})
 }
-    // let regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
-    // ///^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    // let testmails=data.email
-    // let emailvalidation= regex.test(testmails)
-    let isValidEmail = validator.validate(data.email)
-
-    if(isValidEmail){
+     let testmails=data.email
+     const validEmail = /^\w+([\.-]?\w+)*@[a-z]\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    
+    if(!validEmail.test(testmails)){
         return res.status(400).send({status: false,msg: "enter a valid email id"})
     }
     let email=await AuthorModel.find({email:data.email})
