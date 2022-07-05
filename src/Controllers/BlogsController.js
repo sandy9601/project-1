@@ -65,7 +65,7 @@ const DeletedBlog=async function(req,res){
     let BlogsId=req.params.blogsid
 
     const DeletedBlog=await BlogsModel.findOneAndUpdate({_id:BlogsId,isDeleted:false},{$set:{isDeleted:true,deleteAt:Date.now()}})
-    return res.status(200).send({status:false,msg:"Blog doesnot exist"})
+    return res.status(200).send({status:true,msg:"Blog doesnot exist"})
 }
 catch(err){
     res.status(500).send({status:false,error:err.message})
@@ -82,7 +82,7 @@ const DeletedQuery=async function(req,res){
     let token = req.headers["x-api-key"];
     let decodedToken = jwt.verify(token, "Functionup-radon")
     let authorid=decodedToken.authorid
-    console.log(authorid)
+   
     const DeletedQuery=await BlogsModel.updateMany({$and:[{authorId:authorid},{isDeleted:false}, query]},{$set:{isDeleted:true}}) 
     if(DeletedQuery.matchedCount===0){
         return res.status(404).send({status:false,msg:"Blog doesnot exist"})

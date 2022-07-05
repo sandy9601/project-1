@@ -22,7 +22,7 @@ const mid3=async function(req,res,next){
     try{
 let data =req.body
         if(Object.keys(data).length===0){
-            return res.status(400).send({status:true,msg:"body couldnot be empty"})
+            return res.status(400).send({status:false,msg:"body couldnot be empty"})
          }
          else{
             next()
